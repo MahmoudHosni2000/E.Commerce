@@ -21,4 +21,12 @@
     <ProjectReference Include="..\E-Commerce.Service\E-Commerce.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="..\E-Commerce.Persistence\Context\DataSeed\*.json">
+      <Link>Data\DataSeed\%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

@@ -9,10 +9,8 @@ namespace E_Commerce.Persistence.DbInitializers
     {
         public void Initialize()
         {
-            context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
-            var seedDataPath = Path.GetFullPath(
-                Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "E-Commerce.Persistence", "Context", "DataSeed"));
+            var seedDataPath = Path.Combine(AppContext.BaseDirectory, "Data", "DataSeed");
 
             if (context.Database.CanConnect())
             {

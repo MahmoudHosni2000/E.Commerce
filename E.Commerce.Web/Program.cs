@@ -43,7 +43,7 @@ namespace E.Commerce.Web
             initializer.Initialize();
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
+            if (app.Environment.IsDevelopment() || app.Configuration.GetValue<bool>("EnableSwagger"))
             {
                 app.MapOpenApi();
                 app.UseSwaggerUI(options =>

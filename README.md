@@ -79,7 +79,7 @@ dotnet build E.Commerce.slnx
 
 ### 2. Configure a disposable database
 
-**The current initializer calls `EnsureDeleted()` followed by `EnsureCreated()` on every application startup. All data in the configured database is deleted. Use a dedicated disposable development database only.**
+The initializer uses `EnsureCreated()` and inserts seed records only when their tables are empty. It no longer deletes the database at startup. Use a dedicated database for this application; `EnsureCreated()` is not a migration strategy for upgrading existing schemas.
 
 Override the connection string in the current PowerShell session:
 
@@ -103,9 +103,9 @@ dotnet run --project E.Commerce.Web --launch-profile https
 - OpenAPI document: https://localhost:7139/openapi/v1.json
 - HTTP launch address: http://localhost:5045
 
-Swagger UI and the OpenAPI document are mapped only in Development. The launch profiles set this environment automatically.
+Swagger UI and the OpenAPI document are enabled in Development, or when configuration `EnableSwagger` is true. For hosting, set `EnableSwagger=true`, configure `baseUrl`, and supply `ConnectionStrings__DefaultConnection` through private deployment settings.
 
-Keep the repository folder structure intact: the initializer locates JSON seed files relative to the compiled application's directory. It currently depends on the source checkout layout, so a standalone published deployment needs additional seed-file packaging work.
+JSON seed files are copied to `Data/DataSeed` in both build and publish output. The initializer reads them relative to the application directory.
 
 ## Product endpoints
 
@@ -165,8 +165,8 @@ The generated WeatherForecast controller is also present as template code; it is
 - An unknown product ID currently returns HTTP 200 with an empty `ProductDto`, rather than HTTP 404.
 - `totalCount` currently uses the paginated product specification, so it can count only the requested page rather than every matching product. Treat this pagination metadata as a known issue.
 - Page index and page size need lower-bound validation.
-- Startup recreates the database; persistent deployment requires replacing this development behavior.
-- Seed loading assumes the source repository layout.
+- Schema creation uses `EnsureCreated()`; versioned schema migrations are not yet implemented.
+- Seed data is added only when each catalog table is empty.
 - There is no automated test project or CI workflow in this snapshot.
 - No hosted URL is configured in this repository.
 
@@ -178,10 +178,10 @@ Compilation alone does not verify database connectivity, initialization, or endp
 
 ## Suggested next steps
 
-1. Replace unconditional database recreation with a controlled initialization and migration strategy.
+1. Add a versioned migration strategy for schema upgrades.
 2. Correct the total-count query and add pagination validation.
 3. Return a proper 404 response for missing products and standardize error responses.
-4. Package seed assets for publishing and align framework/package versions.
+4. Align framework/package versions.
 5. Add integration tests and CI before extending the API with authentication, carts, or orders.
 
 ## Author
