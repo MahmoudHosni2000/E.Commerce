@@ -1,0 +1,35 @@
+# IDE and build output
+.vs/
+.idea/
+.vscode/
+**/[Bb]in/
+**/[Oo]bj/
+artifacts/
+publish/
+TestResults/
+*.user
+*.suo
+*.log
+*.tmp
+*.binlog
+desktop.ini
+Thumbs.db
+
+# Local credentials and deployment configuration
+.env
+.env.*
+!.env.example
+**/appsettings.Local.json
+**/appsettings.Production.json
+**/Properties/PublishProfiles/
+*.pfx
+*.p12
+*.pem
+*.key
+*.publishsettings
+
+# Local database files
+*.mdf
+*.ldf
+*.ndf
+*.bak
