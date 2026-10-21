@@ -4,6 +4,12 @@ An ASP.NET Core learning project that exposes a product catalog through a REST-s
 
 The implemented scope is catalog browsing. This repository is a reference implementation in progress, rather than a complete online store.
 
+## Live API
+
+[Open Swagger UI](https://mahmoud-ecommerce-api.runasp.net/swagger/index.html)
+
+Base URL: https://mahmoud-ecommerce-api.runasp.net
+
 ## Features
 
 - Browse products with their brand and type names.
@@ -168,7 +174,7 @@ The generated WeatherForecast controller is also present as template code; it is
 - Schema creation uses `EnsureCreated()`; versioned schema migrations are not yet implemented.
 - Seed data is added only when each catalog table is empty.
 - There is no automated test project or CI workflow in this snapshot.
-- No hosted URL is configured in this repository.
+- The demo is hosted on MonsterASP; availability depends on the free hosting service.
 
 ## Verification
 
