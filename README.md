@@ -8,7 +8,9 @@ The implemented scope is catalog browsing. This repository is a reference implem
 
 [Open Swagger UI](https://mahmoud-ecommerce-api.runasp.net/swagger/index.html)
 
-Base URL: https://mahmoud-ecommerce-api.runasp.net
+API base URL (for developers): `https://mahmoud-ecommerce-api.runasp.net`
+
+The base URL is an API root, not a web page, so opening it in a browser shows a 404. Use the Swagger UI link above to try the API.
 
 ## Features
 
