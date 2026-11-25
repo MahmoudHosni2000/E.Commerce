@@ -60,6 +60,9 @@ namespace E.Commerce.Web
 
             app.MapControllers();
 
+            // Send the bare root URL to Swagger UI instead of a 404
+            app.MapGet("/", () => Results.Redirect("/swagger")).ExcludeFromDescription();
+
             app.Run();
         }
     }
